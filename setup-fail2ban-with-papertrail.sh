@@ -1,26 +1,25 @@
 #!/usr/bin/env bash
 # =============================================================================
-# Fail2ban Security Setup Script v1.3.3
-# 
+# Fail2ban Security Setup Script v1.3.4
+#
 # This script sets up comprehensive security monitoring with fail2ban and
-# integrates it with your existing Papertrail configuration.
+# integrates it with an existing Papertrail configuration.
 #
-# FIXED IN v1.3.3:
-# - Bot detection now monitors Caddy JSON logs (which contain IPs)
-# - No more looking for Rails logs (they don't contain IPs)
-# - Proper JSON parsing for Caddy's structured logs
-# - Renamed to caddy-bots for clarity
+# v1.3.4 Changes:
+# - Caddy bot detection filter is now more robust and specific.
+# - Bot detection jail correctly monitors Caddy logs via systemd journal.
+# - All other jails and logging configurations are stable.
 #
-# Prerequisites: 
-# - Papertrail must already be configured via their setup script
-# - UFW firewall should be active
-# 
-# Compatible with: Ubuntu/Debian systems using systemd
+# Prerequisites:
+# - Papertrail must already be configured via their setup script.
+# - UFW firewall should be active.
+#
+# Compatible with: Ubuntu/Debian systems using systemd.
 # =============================================================================
 
 set -e  # Exit on any error
 
-echo "🛡️  === Fail2ban Security Setup Script v1.3.3 ==="
+echo "🛡️ === Fail2ban Security Setup Script v1.3.4 ==="
 echo "🔧 Setting up fail2ban with Papertrail integration and smart detection"
 echo ""
 
